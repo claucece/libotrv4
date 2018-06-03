@@ -654,7 +654,7 @@ INTERNAL otrng_err otrng_key_get_skipped_keys(m_enc_key_p enc_key,
         shake_256_kdf1(mac_key, MAC_KEY_BYTES, 0x19, enc_key, ENC_KEY_BYTES);
         manager->skipped_keys =
             otrng_list_remove_element(temp_list, manager->skipped_keys);
-        otrng_list_free_full(temp_list);
+        //otrng_list_free_full(temp_list);
         return SUCCESS;
       }
     }
