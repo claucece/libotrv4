@@ -95,12 +95,15 @@ static void calculate_ri(goldilocks_448_scalar_p dst,
                          const goldilocks_448_scalar_p ci,
                          const goldilocks_448_scalar_p ti) {
   // if_secret = t1 - c1 * secret OR t2 - c2 * secret OR t3 - c3 * secret
+  printf("\n am I here 3\n");
   goldilocks_448_scalar_p if_secret;
   goldilocks_448_scalar_mul(if_secret, ci, secret);
   goldilocks_448_scalar_sub(if_secret, ti, if_secret);
 
+  printf("\n am I here 1\n");
   goldilocks_448_scalar_cond_sel(dst, ri, if_secret, is_secret);
   //scalar_select(dst, ri, if_secret, is_secret & 1);
+  printf("\n am I here 2\n");
 
   goldilocks_448_scalar_destroy(if_secret);
 }
