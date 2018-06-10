@@ -208,9 +208,9 @@ INTERNAL otrng_err otrng_rsig_authenticate(
   // c2 = is_A2 ? c - c1 - c3 : c2
   // c3 = is_A3 ? c - c1 - c2 : c3
 
-  printf("\n is_A1 %llx \n", is_A1);
-  printf("\n is_A2 %llx \n", is_A1);
-  printf("\n is_A3 %llx \n", is_A1);
+  printf("\n is_A1 %lx \n", is_A1);
+  printf("\n is_A2 %lx \n", is_A1);
+  printf("\n is_A3 %lx \n", is_A1);
 
   calculate_ci(dst->c1, c, c1, is_A1, c2, c3);
   calculate_ci(dst->c2, c, c2, is_A2, c1, c3);
