@@ -230,6 +230,7 @@ INTERNAL otrng_err otrng_rsig_authenticate(
   // t1 = secretIs1 ? t1 - c1 * secret : t1
   // t2 = secretIs2 ? t2 - c2 * secret : t2
   // t3 = secretIs3 ? t3 - c3 * secret : t3
+
   calculate_ri(dst->r1, secret, r1, is_A1, dst->c1, t1);
   calculate_ri(dst->r2, secret, r2, is_A2, dst->c2, t2);
   calculate_ri(dst->r3, secret, r3, is_A3, dst->c3, t3);
