@@ -94,7 +94,7 @@ static void calculate_ci(goldilocks_448_scalar_p dst,
 
 static void calculate_ri(goldilocks_448_scalar_p dst,
                          const goldilocks_448_scalar_p secret,
-                         const goldilocks_448_scalar_p ri, uint8_t is_secret,
+                         const goldilocks_448_scalar_p ri, goldilocks_bool_t is_secret,
                          const goldilocks_448_scalar_p ci,
                          const goldilocks_448_scalar_p ti) {
   // if_secret = t1 - c1 * secret OR t2 - c2 * secret OR t3 - c3 * secret
@@ -213,10 +213,6 @@ INTERNAL otrng_err otrng_rsig_authenticate(
   // c1 = is_A1 ? c - c2 - c3 : c1
   // c2 = is_A2 ? c - c1 - c3 : c2
   // c3 = is_A3 ? c - c1 - c2 : c3
-
-  printf("\n is_A1 1 %lx \n", is_A1);
-  printf("\n is_A2 2 %lx \n", is_A1);
-  printf("\n is_A3 3 %lx \n", is_A1);
 
   calculate_ci(dst->c1, c, c1, is_A1, c2, c3);
   calculate_ci(dst->c2, c, c2, is_A2, c1, c3);
