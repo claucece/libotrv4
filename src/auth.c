@@ -214,9 +214,9 @@ INTERNAL otrng_err otrng_rsig_authenticate(
   // c2 = is_A2 ? c - c1 - c3 : c2
   // c3 = is_A3 ? c - c1 - c2 : c3
 
-  printf("\n is_A1 %lx \n", is_A1);
-  printf("\n is_A2 %lx \n", is_A1);
-  printf("\n is_A3 %lx \n", is_A1);
+  printf("\n is_A1 1 %lx \n", is_A1);
+  printf("\n is_A2 2 %lx \n", is_A1);
+  printf("\n is_A3 3 %lx \n", is_A1);
 
   calculate_ci(dst->c1, c, c1, is_A1, c2, c3);
   calculate_ci(dst->c2, c, c2, is_A2, c1, c3);
@@ -231,6 +231,9 @@ INTERNAL otrng_err otrng_rsig_authenticate(
   // t2 = secretIs2 ? t2 - c2 * secret : t2
   // t3 = secretIs3 ? t3 - c3 * secret : t3
 
+  printf("\n is_A1 1 %lx \n", is_A1);
+  printf("\n is_A2 2 %lx \n", is_A1);
+  printf("\n is_A3 3 %lx \n", is_A1);
   calculate_ri(dst->r1, secret, r1, is_A1, dst->c1, t1);
   calculate_ri(dst->r2, secret, r2, is_A2, dst->c2, t2);
   calculate_ri(dst->r3, secret, r3, is_A3, dst->c3, t3);
