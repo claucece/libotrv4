@@ -79,12 +79,15 @@ static void calculate_ci(goldilocks_448_scalar_p dst,
                          const goldilocks_448_scalar_p cj,
                          const goldilocks_448_scalar_p ck) {
   // if_secret = c - c2 - c3 or c - c1 - c3 or c - c1 - c2
+  printf("\n am I here 4\n");
   goldilocks_448_scalar_p if_secret;
 
   goldilocks_448_scalar_sub(if_secret, c, cj);
   goldilocks_448_scalar_sub(if_secret, if_secret, ck);
+  printf("\n am I here 5\n");
   goldilocks_448_scalar_cond_sel(dst, ci, if_secret, is_secret);
   //scalar_select(dst, ci, if_secret, is_secret & 1);
+  printf("\n am I here 6\n");
 
   goldilocks_448_scalar_destroy(if_secret);
 }
