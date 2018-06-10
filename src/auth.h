@@ -76,7 +76,7 @@ typedef struct ring_sig_s {
  */
 
 INTERNAL otrng_err otrng_rsig_authenticate(
-    ring_sig_s *dst, const rsig_privkey_p priv, const rsig_pubkey_p pub,
+    ring_sig_p dst, const rsig_privkey_p priv, const rsig_pubkey_p pub,
     const rsig_pubkey_p A1, const rsig_pubkey_p A2, const rsig_pubkey_p A3,
     const uint8_t *msg, size_t msglen);
 
