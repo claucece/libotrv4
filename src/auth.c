@@ -54,40 +54,17 @@ static void choose_T(goldilocks_448_point_p chosen,
   goldilocks_448_point_cond_sel(chosen, chosen, Ti, is_secret);
 }
 
-//static void scalar_select(goldilocks_448_scalar_p dst,
-//                          const goldilocks_448_scalar_p a,
-//                          const goldilocks_448_scalar_p b, uint8_t select_b) {
-//  // TODO: Ideally we want:
-//  // goldilocks_448_scalar_cond_sel but it segfaults on some gcc (see build for:
-//  // 75493e1a9ab9ebde445f68b3981950aca6c6443b).
-//  goldilocks_448_scalar_p select_b_scalar, tmp;
-//
-//  // do the constant time select between a and b;
-//  // ci = (b * select_b) + (a * (1-select_b));
-//  goldilocks_448_scalar_mul(tmp, b, select_b_scalar);
-//  goldilocks_448_scalar_add(dst, tmp, a);
-//  goldilocks_448_scalar_mul(tmp, a, select_b_scalar);
-//  goldilocks_448_scalar_sub(dst, dst, tmp);
-//
-//  goldilocks_448_scalar_destroy(tmp);
-//  goldilocks_448_scalar_destroy(select_b_scalar);
-//}
-
 static void calculate_ci(goldilocks_448_scalar_p dst,
                          const goldilocks_448_scalar_p c,
                          const goldilocks_448_scalar_p ci, goldilocks_bool_t is_secret,
                          const goldilocks_448_scalar_p cj,
                          const goldilocks_448_scalar_p ck) {
   // if_secret = c - c2 - c3 or c - c1 - c3 or c - c1 - c2
-  printf("\n am I here 4\n");
   goldilocks_448_scalar_p if_secret;
 
   goldilocks_448_scalar_sub(if_secret, c, cj);
   goldilocks_448_scalar_sub(if_secret, if_secret, ck);
-  printf("\n am I here 5\n");
   goldilocks_448_scalar_cond_sel(dst, ci, if_secret, is_secret);
-  //scalar_select(dst, ci, if_secret, is_secret & 1);
-  printf("\n am I here 6\n");
 
   goldilocks_448_scalar_destroy(if_secret);
 }
@@ -98,15 +75,11 @@ static void calculate_ri(goldilocks_448_scalar_p dst,
                          const goldilocks_448_scalar_p ci,
                          const goldilocks_448_scalar_p ti) {
   // if_secret = t1 - c1 * secret OR t2 - c2 * secret OR t3 - c3 * secret
-  printf("\n am I here 3\n");
   goldilocks_448_scalar_p if_secret;
   goldilocks_448_scalar_mul(if_secret, ci, secret);
   goldilocks_448_scalar_sub(if_secret, ti, if_secret);
 
-  printf("\n am I here 1\n");
   goldilocks_448_scalar_cond_sel(dst, ri, if_secret, is_secret);
-  //scalar_select(dst, ri, if_secret, is_secret & 1);
-  printf("\n am I here 2\n");
 
   goldilocks_448_scalar_destroy(if_secret);
 }

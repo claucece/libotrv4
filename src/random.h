@@ -34,11 +34,6 @@ static inline void ed448_random_scalar(goldilocks_448_scalar_p priv) {
   uint8_t sym[ED448_PRIVATE_BYTES];
   random_bytes(sym, ED448_PRIVATE_BYTES);
 
-  printf("SYM \n");
-   for (int i = 0; i < ED448_PRIVATE_BYTES; i++) {
-     printf("%x", sym[i]);
-  }
-  printf("\n");
   // TODO: it hashes and clamp as per RFC 8032 keygen method.
   // It may not be what we want where it is used (SMP and RingSignature) since
   // a less strict value "get a random x in Z_q" is required.
