@@ -214,9 +214,9 @@ INTERNAL otrng_err otrng_rsig_authenticate(
   // c2 = is_A2 ? c - c1 - c3 : c2
   // c3 = is_A3 ? c - c1 - c2 : c3
 
-  printf("\n is_A1 1 %llx \n", is_A1);
-  printf("\n is_A2 2 %llx \n", is_A1);
-  printf("\n is_A3 3 %llx \n", is_A1);
+  printf("\n is_A1 1 %lx \n", is_A1);
+  printf("\n is_A2 2 %lx \n", is_A1);
+  printf("\n is_A3 3 %lx \n", is_A1);
 
   calculate_ci(dst->c1, c, c1, is_A1, c2, c3);
   calculate_ci(dst->c2, c, c2, is_A2, c1, c3);
@@ -246,7 +246,7 @@ INTERNAL otrng_err otrng_rsig_authenticate(
 }
 
 void otrng_rsig_calculate_c_from_sigma(goldilocks_448_scalar_p c,
-                                       const ring_sig_s *src,
+                                       const ring_sig_p src,
                                        const rsig_pubkey_p A1,
                                        const rsig_pubkey_p A2,
                                        const rsig_pubkey_p A3,
@@ -268,7 +268,7 @@ void otrng_rsig_calculate_c_from_sigma(goldilocks_448_scalar_p c,
   otrng_rsig_calculate_c(c, A1, A2, A3, A1c1, A2c2, A3c3, msg, msglen);
 }
 
-INTERNAL otrng_bool otrng_rsig_verify(const ring_sig_s *src,
+INTERNAL otrng_bool otrng_rsig_verify(const ring_sig_p src,
                                       const rsig_pubkey_p A1,
                                       const rsig_pubkey_p A2,
                                       const rsig_pubkey_p A3,
@@ -286,7 +286,7 @@ INTERNAL otrng_bool otrng_rsig_verify(const ring_sig_s *src,
   return otrng_false;
 }
 
-INTERNAL void otrng_ring_sig_destroy(ring_sig_s *src) {
+INTERNAL void otrng_ring_sig_destroy(ring_sig_p src) {
   otrng_ec_scalar_destroy(src->c1);
   otrng_ec_scalar_destroy(src->r1);
   otrng_ec_scalar_destroy(src->c2);
