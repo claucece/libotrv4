@@ -119,6 +119,8 @@ AX_CFLAGS_GCC_OPTION([-Wlogicalop])
 AX_CFLAGS_GCC_OPTION([-Wno-type-limits])
 AX_CFLAGS_GCC_OPTION([-Wnull-dereference])
 AX_CFLAGS_GCC_OPTION([-Wwrite-strings])
+AX_CFLAGS_GCC_OPTION([-Wstringop-truncation])
+AX_CFLAGS_GCC_OPTION([-Woverlength-strings])
 dnl for undefined behavior
 # AX_CFLAGS_GCC_OPTION([-fcatch-undefined-behavior])
 # AX_CFLAGS_GCC_OPTION([-fno-delete-null-pointer-checks])
