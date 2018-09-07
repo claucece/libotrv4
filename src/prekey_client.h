@@ -69,14 +69,14 @@ typedef struct {
   ring_sig_p sigma;
   uint8_t *message;
   size_t message_len;
-} otrng_prekey_dake3_message_s;
+} otrng_prekey_dake3_message_s, otrng_prekey_dake3_message_p[1];
 
 typedef struct {
   uint8_t num_prekey_messages;
   dake_prekey_message_s **prekey_messages;
   client_profile_s *client_profile;
   otrng_prekey_profile_s *prekey_profile;
-} otrng_prekey_publication_message_s;
+} otrng_prekey_publication_message_s, otrng_prekey_publication_message_p[1];
 
 typedef struct {
   uint32_t client_instance_tag;

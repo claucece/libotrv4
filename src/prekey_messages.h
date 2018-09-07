@@ -26,4 +26,11 @@
 INTERNAL otrng_result otrng_prekey_success_message_deserialize(
     otrng_prekey_success_message_s *dst, const uint8_t *src, size_t src_len);
 
+INTERNAL otrng_result otrng_prekey_dake3_message_deserialize(
+    otrng_prekey_dake3_message_s *dst, const uint8_t *src, size_t src_len);
+
+INTERNAL otrng_result otrng_prekey_publication_message_deserialize(
+    otrng_prekey_publication_message_s *dst, const uint8_t *src,
+    size_t src_len);
+
 #endif

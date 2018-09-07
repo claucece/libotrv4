@@ -572,7 +572,7 @@ tstatic char *send_dake3(const otrng_prekey_dake2_message_s *msg2,
 
   w += HASH_BYTES;
 
-  /* Both composite identity AND composite phi have the server's bare JID */
+  /* Both composite identity and composite phi have the server's bare JID */
   shake_256_prekey_server_kdf(
       t + w, HASH_BYTES, usage_receiver_prekey_composite_identity,
       msg2->composite_identity, msg2->composite_identity_len);

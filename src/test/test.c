@@ -294,6 +294,8 @@ int main(int argc, char **argv) {
 
   g_test_add_func("/prekey_messages/deserialize_prekey_success_message",
                   test_deserialize_prekey_success_message);
+  g_test_add_func("/prekey_messages/deserialize_prekey_dake3_message",
+                  test_deserialize_prekey_dake3_message);
 
   g_test_add_func("/client/conversation_api", test_client_conversation_api);
   g_test_add_func("/client/api", test_client_api);
